@@ -11,10 +11,9 @@
             function hideURLbar(){ window.scrollTo(0,1); }
         </script>
         <!-- //for-mobile-apps -->
-        <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.1/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
         <link href="resources/css/style.css" rel="stylesheet" type="text/css" media="all" />
         <!-- gallery -->
-        <link type="text/css" rel="stylesheet" href="resources/css/cm-overlay.css" />
         <!-- //gallery -->
         <!-- font-awesome icons -->
         <link href="resources/css/font-awesome.css" rel="stylesheet"> 
@@ -57,7 +56,7 @@
                 <h3 class="w3l_head w3l_head1">Login</h3>
                 <p class="w3ls_head_para w3ls_head_para1">Smart way to record</p>
                 <div class="w3_mail_grids">
-                    <h3>${msg}</h3>
+                    <%@include file="alert.jsp" %>
                     <form action="Login" method="post">
                         <div class="col-md-12 w3_agile_mail_grid">
                             <span class="input input--ichiro">
@@ -164,20 +163,13 @@
                 </div>
             </div>
         </div>
-        <!-- //footer -->
-        <script src="js/jquery-2.2.3.min.js"></script> 
 
         <!-- js -->
-        <script src="js/jquery.tools.min.js"></script>
-        <script src="js/jquery.mobile.custom.min.js"></script>
-        <script src="js/jquery.cm-overlay.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('.cm-overlay').cmOverlay();
-            });
-        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.js"></script>
+
         <!-- js files -->   
-        <script src="js/bars.js"></script>   
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>   
         <!-- start-smoth-scrolling -->
         <script type="text/javascript" src="js/move-top.js"></script>
         <script type="text/javascript" src="js/easing.js"></script>
@@ -191,7 +183,7 @@
         </script>
         <!-- start-smoth-scrolling -->   
         <!-- //js -->
-        <script src="js/bootstrap.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.1/js/bootstrap.js"></script>
         <!-- //for bootstrap working -->
         <!-- here stars scrolling icon -->
         <script type="text/javascript">

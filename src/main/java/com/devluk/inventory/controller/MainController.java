@@ -10,8 +10,6 @@ import com.devluk.inventory.entity.Users;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,9 +23,14 @@ public class MainController {
     @Autowired
     GenericDao genericDao;
 
-    @RequestMapping(value = {"/", "Login"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/Login"}, method = RequestMethod.GET)
     public String index() {
         return "index";
+    }
+
+    @RequestMapping(value = {"/Index", "/Home"}, method = RequestMethod.GET)
+    public String home() {
+        return "home";
     }
 
     @RequestMapping(value = "/Login", method = RequestMethod.POST)
@@ -38,17 +41,16 @@ public class MainController {
             List allData = genericDao.getAllData(Users.class, l);
             if (allData.size() > 0) {
                 user = (Users) allData.get(0);
-                model.addFlashAttribute("msg", "alertfy.success('Welcome " + user.getUsername() + "')");
-                return "home";
+                model.addFlashAttribute("msg", "alertify.success('Welcome " + user.getUsername() + "')");
+                return "redirect:/Home";
             } else {
-                model.addFlashAttribute("msg", "alertfy.success('Username or Password incorrent')");
+                model.addFlashAttribute("msg", "alertify.error('Username or Password incorrent')");
                 return "redirect:/Login";
             }
         } catch (Exception ex) {
-            model.addFlashAttribute("msg", "alertfy.success('" + ex.getMessage() + "')");
+            model.addFlashAttribute("msg", "alertfy.error('" + ex.getMessage() + "')");
+            return "redirect:/Login";
         }
-        return "redirect:/Login";
-
     }
 
 }
