@@ -110,7 +110,7 @@ public class GenericDao {
     }
 
     @Transactional
-    public <T> int saveOrUpdate(Class cl, T t) {
+    public <T> int saveOrUpdate(T t) {
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(t);
         return 1;

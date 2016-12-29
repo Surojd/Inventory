@@ -39,14 +39,14 @@ public class RESTController {
             ObjectMapper mapper = new ObjectMapper();
             if (jsonData.trim().startsWith("{")) {
                 Object obj = mapper.convertValue(map.parse(jsonData), cl);
-                int i = genericDao.saveOrUpdate(cl, obj);
+                int i = genericDao.saveOrUpdate(obj);
                 return new int[]{i};
             } else if (jsonData.trim().startsWith("[")) {
                 List list = mapper.readValue(jsonData, TypeFactory.defaultInstance().constructCollectionType(List.class, cl));
                 int a[] = new int[list.size()];
                 int sn = 0;
                 for (Object obj : list) {
-                    int i = genericDao.saveOrUpdate(cl, obj);
+                    int i = genericDao.saveOrUpdate(obj);
                     a[sn++] = i;
                 }
                 return a;

@@ -7,6 +7,7 @@ package com.devluk.inventory.controller;
 
 import com.devluk.inventory.dao.GenericDao;
 import com.devluk.inventory.entity.Users;
+import com.devluk.inventory.entity.Usertype;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,9 +23,23 @@ public class MainController {
 
     @Autowired
     GenericDao genericDao;
+    boolean first = true;
 
     @RequestMapping(value = {"/", "/Login"}, method = RequestMethod.GET)
     public String index() {
+        if (first) {
+            Usertype usertype = new Usertype();
+            usertype.setName("admin");
+            usertype.setRolelist("Transaction, Sales Report, Purchases Report, Stock, Revenue, Change Password, Add Staff");
+            genericDao.saveOrUpdate(usertype);
+            Users users = new Users();
+            users.setUsername("admin");
+            users.setPassword("admin");
+            users.setUsertype("admin");
+            users.setSessionid("000000");
+            genericDao.saveOrUpdate(users);
+            first = false;
+        }
         return "index";
     }
 
